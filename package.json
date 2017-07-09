@@ -29,6 +29,8 @@
     "material-ui": "^1.0.0-alpha.21",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router": "^4.1.1"
+    "react-router": "^4.1.1",
+    "validate-password": "^1.0.4",
+    "validator": "^8.0.0"
   }
 }
