@@ -31,8 +31,8 @@ class Login extends Component{
 		this.state={
 			email:"",
 			password:"",
-			emailhelpertext:"Email format expected: john.doe@xyz.com",
-			passwordhelpertext:"Enter a strong password",
+			emailhelpertext:"",
+			passwordhelpertext:"",
 			emailCheck:false,
 			passwordCheck:false,
 			disabled : ""
@@ -40,6 +40,12 @@ class Login extends Component{
 		this.handleEmailData = this.handleEmailData.bind(this);
 		this.handlePasswordData = this.handlePasswordData.bind(this);
 		this.renderLoginButton =this.renderLoginButton.bind(this);
+	}
+	componentWillMount(){
+		let emailtext = this.props.data.emailhelpertext;
+		let passtext = this.props.data.passwordhelpertext;
+		this.setState({emailhelpertext:emailtext});
+		this.setState({passwordhelpertext:passtext});
 	}
 	handleEmailData(event){
 	 this.setState({ email: event.target.value },this.props.updateParent(event.target.value,this.state.password));
@@ -83,12 +89,12 @@ class Login extends Component{
 		return(
 			<Paper className={classes.loginContainer} elevation={4}>
 		        <Typography type="title" component="p">
-		          Already have an Account? Login then!
+		          {this.props.data.heading}
 		        </Typography>
 		        <TextField
 		          id="email"
 		          className={classes.input}
-		          label="email id"
+		          label={this.props.data.emailplaceholder}
 		          value={this.state.email}
 		          onChange={this.handleEmailData}
 		          type="email"
@@ -98,7 +104,7 @@ class Login extends Component{
 		        <TextField
 		          id="password"
 		          className={classes.input}
-		          label="Password"
+		          label={this.props.data.passwordplaceholder}
 		          type="password"
 		          value={this.state.password}
 		           onChange={this.handlePasswordData}

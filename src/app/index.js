@@ -35,10 +35,13 @@ class App extends Component{
 	}
 	render(){
 		const classes = this.props.classes;
+		var data={heading:"Already have an Account? Login then!",
+		emailhelpertext:"Email format expected: john.doe@xyz.com",
+		passwordhelpertext:"Enter a strong password",emailplaceholder:"Enter emailid",passwordplaceholder:"Enter password"}
 		return(
 				<Grid container className={classes.container}>
 					<Grid item lg={4} md={6} sm={6} xs={12}>
-			          <Login updateParent={this.handleChildData} onLoginClick={this.onLoginClick}/>
+			          <Login data={data} updateParent={this.handleChildData} onLoginClick={this.onLoginClick}/>
 			        </Grid>
 			        <Grid item lg={4} md={6} sm={6} xs={12}>
 			          <Register/>
