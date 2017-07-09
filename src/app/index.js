@@ -16,12 +16,32 @@ const styleSheet = createStyleSheet('App', theme => ({
 
 
 class App extends Component{
+	constructor(){
+		super();
+		this.state={
+			email:"",
+			password:""
+		}
+		this.handleChildData = this.handleChildData.bind(this);
+		this.onLoginClick =this.onLoginClick.bind(this);
+	}
+	handleChildData(email,password){
+		this.setState({email});
+		this.setState({password});
+	}
+	onLoginClick(e){
+		console.log(e);
+		//make the api call and authenticate the user
+	}
 	render(){
 		const classes = this.props.classes;
+		var data={heading:"Already have an Account? Login then!",
+		emailhelpertext:"Email format expected: john.doe@xyz.com",
+		passwordhelpertext:"Enter a strong password",emailplaceholder:"Enter emailid",passwordplaceholder:"Enter password"}
 		return(
 				<Grid container className={classes.container}>
 					<Grid item lg={4} md={6} sm={6} xs={12}>
-			          <Login/>
+			          <Login data={data} updateParent={this.handleChildData} onLoginClick={this.onLoginClick}/>
 			        </Grid>
 			        <Grid item lg={4} md={6} sm={6} xs={12}>
 			          <Register/>
