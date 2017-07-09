@@ -42,8 +42,8 @@ class Login extends Component{
 		this.renderLoginButton =this.renderLoginButton.bind(this);
 	}
 	componentWillMount(){
-		let emailtext = this.props.data.emailhelpertext;
-		let passtext = this.props.data.passwordhelpertext;
+		let emailtext = this.props.data.helpertext.email;
+		let passtext = this.props.data.helpertext.password;
 		this.setState({emailhelpertext:emailtext});
 		this.setState({passwordhelpertext:passtext});
 	}
@@ -94,7 +94,7 @@ class Login extends Component{
 		        <TextField
 		          id="email"
 		          className={classes.input}
-		          label={this.props.data.emailplaceholder}
+		          label={this.props.data.placeholder.email}
 		          value={this.state.email}
 		          onChange={this.handleEmailData}
 		          type="email"
@@ -104,7 +104,7 @@ class Login extends Component{
 		        <TextField
 		          id="password"
 		          className={classes.input}
-		          label={this.props.data.passwordplaceholder}
+		          label={this.props.data.placeholder.password}
 		          type="password"
 		          value={this.state.password}
 		           onChange={this.handlePasswordData}
