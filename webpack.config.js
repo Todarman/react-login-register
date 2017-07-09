@@ -5,7 +5,7 @@ let libraryName = 'main';
 
 var entrypoint = process.env.npm_lifecycle_event === 'dev' ?
   'webpack-dev-server/client?http://localhost:8080' :
-  './src/app.js';
+  './src/index.js';
 
 let plugins = [], outputFile;
 
