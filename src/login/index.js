@@ -34,10 +34,12 @@ class Login extends Component{
 			emailhelpertext:"Email format expected: john.doe@xyz.com",
 			passwordhelpertext:"Enter a strong password",
 			emailCheck:false,
-			passwordCheck:false
+			passwordCheck:false,
+			disabled : ""
 		}
 		this.handleEmailData = this.handleEmailData.bind(this);
 		this.handlePasswordData = this.handlePasswordData.bind(this);
+		this.renderLoginButton =this.renderLoginButton.bind(this);
 	}
 	handleEmailData(event){
 	 this.setState({ email: event.target.value },this.props.updateParent(event.target.value,this.state.password));
@@ -64,8 +66,20 @@ class Login extends Component{
 	 	this.setState({passwordhelpertext:passwordData.validationMessage});
 	 }
 	}
+	renderLoginButton(classes){
+		if((this.state.emailCheck && this.state.passwordCheck)!== true){
+	        return [<Button key={Math.random(3)+2} raised color="primary" disabled onClick={this.props.onLoginClick} className={classes.button}>
+	        	Login
+	      	</Button>];
+		}else{
+	      	return [<Button key={Math.random(3)+2} raised color="primary" onClick={this.props.onLoginClick} className={classes.button}>
+	        	Login
+	      	</Button>];
+		}
+	}
 	render(){
 		const classes = this.props.classes;
+		let isdisabled = this.state.disabled;
 		return(
 			<Paper className={classes.loginContainer} elevation={4}>
 		        <Typography type="title" component="p">
@@ -91,9 +105,7 @@ class Login extends Component{
 		          helperText={this.state.passwordhelpertext}
 		          marginForm
 		        />
-		        <Button raised color="primary" className={classes.button}>
-		        	Login
-		      	</Button>
+		        {this.renderLoginButton(classes)}
 	      	</Paper>
 
 			)

@@ -23,17 +23,22 @@ class App extends Component{
 			password:""
 		}
 		this.handleChildData = this.handleChildData.bind(this);
+		this.onLoginClick =this.onLoginClick.bind(this);
 	}
 	handleChildData(email,password){
 		this.setState({email});
 		this.setState({password});
+	}
+	onLoginClick(e){
+		console.log(e);
+		//make the api call and authenticate the user
 	}
 	render(){
 		const classes = this.props.classes;
 		return(
 				<Grid container className={classes.container}>
 					<Grid item lg={4} md={6} sm={6} xs={12}>
-			          <Login updateParent={this.handleChildData}/>
+			          <Login updateParent={this.handleChildData} onLoginClick={this.onLoginClick}/>
 			        </Grid>
 			        <Grid item lg={4} md={6} sm={6} xs={12}>
 			          <Register/>
